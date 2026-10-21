@@ -1,0 +1,2202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        TowerPulse | 5G Energy Prediction
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+     ===================================================== -->
+
+<nav class="navbar">
+
+    <div class="logo">
+
+        <span class="logo-dot"></span>
+
+        TowerPulse
+
+    </div>
+
+    <div class="nav-text">
+
+        5G Energy Intelligence
+
+    </div>
+
+</nav>
+
+
+
+<!-- =====================================================
+     MAIN CONTAINER
+     ===================================================== -->
+
+<main class="main-container">
+
+
+    <!-- =================================================
+         HERO
+         ================================================= -->
+
+    <section class="hero">
+
+        <div class="hero-badge">
+
+            ⚡ Machine Learning Powered
+
+        </div>
+
+
+        <h1>
+
+            How much power will<br>
+            this 5G sector draw?
+
+        </h1>
+
+
+        <p>
+
+            Enter the current network conditions and
+            TowerPulse will instantly estimate
+            Baseband Energy Consumption.
+
+        </p>
+
+    </section>
+
+
+
+    <!-- =================================================
+         PRESETS
+         ================================================= -->
+
+    <section class="preset-section">
+
+        <div class="section-title">
+
+            <span>
+                Quick scenarios
+            </span>
+
+            <small>
+                Try a preset
+            </small>
+
+        </div>
+
+
+        <div class="preset-buttons">
+
+
+            <button
+                type="button"
+                class="preset-btn"
+                onclick="setPreset('quiet')"
+            >
+
+                <span class="preset-icon">
+                    🌙
+                </span>
+
+                <span>
+
+                    <strong>
+                        Quiet night
+                    </strong>
+
+                    <small>
+                        Low traffic
+                    </small>
+
+                </span>
+
+            </button>
+
+
+
+            <button
+                type="button"
+                class="preset-btn"
+                onclick="setPreset('typical')"
+            >
+
+                <span class="preset-icon">
+                    ☀️
+                </span>
+
+                <span>
+
+                    <strong>
+                        Typical hour
+                    </strong>
+
+                    <small>
+                        Normal traffic
+                    </small>
+
+                </span>
+
+            </button>
+
+
+
+            <button
+                type="button"
+                class="preset-btn"
+                onclick="setPreset('busy')"
+            >
+
+                <span class="preset-icon">
+                    📈
+                </span>
+
+                <span>
+
+                    <strong>
+                        Busy cell
+                    </strong>
+
+                    <small>
+                        High traffic
+                    </small>
+
+                </span>
+
+            </button>
+
+
+
+            <button
+                type="button"
+                class="preset-btn"
+                onclick="setPreset('peak')"
+            >
+
+                <span class="preset-icon">
+                    🔥
+                </span>
+
+                <span>
+
+                    <strong>
+                        Peak load
+                    </strong>
+
+                    <small>
+                        Very high traffic
+                    </small>
+
+                </span>
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         DASHBOARD
+         ================================================= -->
+
+    <div class="dashboard-grid">
+
+
+        <!-- =================================================
+             LEFT SIDE
+             ================================================= -->
+
+        <form
+            id="predictionForm"
+            class="input-panel"
+        >
+
+
+            <!-- =============================================
+                 SECTION 01
+                 ============================================= -->
+
+            <section class="form-section">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <span class="step-number">
+                            01
+                        </span>
+
+
+                        <div class="heading-text">
+
+                            <h2>
+                                Where and when?
+                            </h2>
+
+                            <p>
+                                Select the base station,
+                                sector and prediction time.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="form-row">
+
+
+                    <!-- BASE STATION -->
+
+                    <div class="form-group">
+
+                        <label for="site_id">
+                            Base station
+                        </label>
+
+
+                        <select
+                            id="site_id"
+                            name="site_id"
+                            required
+                        >
+
+                            <option value="103">
+                                Site 103
+                            </option>
+
+                            <option value="107">
+                                Site 107
+                            </option>
+
+                            <option value="119">
+                                Site 119
+                            </option>
+
+                            <option value="188">
+                                Site 188
+                            </option>
+
+                            <option value="197">
+                                Site 197
+                            </option>
+
+                            <option value="200">
+                                Site 200
+                            </option>
+
+                            <option value="22">
+                                Site 22
+                            </option>
+
+                            <option value="222">
+                                Site 222
+                            </option>
+
+                            <option value="225">
+                                Site 225
+                            </option>
+
+                            <option value="279">
+                                Site 279
+                            </option>
+
+                            <option value="4">
+                                Site 4
+                            </option>
+
+                            <option value="5">
+                                Site 5
+                            </option>
+
+                            <option value="53">
+                                Site 53
+                            </option>
+
+                            <option value="6">
+                                Site 6
+                            </option>
+
+                            <option value="7">
+                                Site 7
+                            </option>
+
+                            <option value="88">
+                                Site 88
+                            </option>
+
+                            <option value="90">
+                                Site 90
+                            </option>
+
+                            <option value="96">
+                                Site 96
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- DATE -->
+
+                    <div class="form-group">
+
+                        <label for="date">
+                            Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="date"
+                            value="2025-03-15"
+                        >
+
+                    </div>
+
+
+
+                    <!-- TIME -->
+
+                    <div class="form-group">
+
+                        <label for="time">
+                            Time
+                        </label>
+
+                        <input
+                            type="time"
+                            id="time"
+                            value="14:00"
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- SECTOR -->
+
+                <div class="form-group">
+
+                    <label>
+                        Sector
+                    </label>
+
+
+                    <div class="sector-buttons">
+
+                        <button
+                            type="button"
+                            class="sector-btn active"
+                            data-sector="1"
+                            onclick="selectSector(1)"
+                        >
+                            Sector 1
+                        </button>
+
+                        <button
+                            type="button"
+                            class="sector-btn"
+                            data-sector="2"
+                            onclick="selectSector(2)"
+                        >
+                            Sector 2
+                        </button>
+
+                        <button
+                            type="button"
+                            class="sector-btn"
+                            data-sector="3"
+                            onclick="selectSector(3)"
+                        >
+                            Sector 3
+                        </button>
+
+                        <button
+                            type="button"
+                            class="sector-btn"
+                            data-sector="4"
+                            onclick="selectSector(4)"
+                        >
+                            Sector 4
+                        </button>
+
+                    </div>
+
+
+                    <input
+                        type="hidden"
+                        id="sector"
+                        name="sector"
+                        value="1"
+                    >
+
+                </div>
+
+
+                <!-- HIDDEN TIME FEATURES -->
+
+                <input
+                    type="hidden"
+                    id="day"
+                    name="day"
+                    value="15"
+                >
+
+                <input
+                    type="hidden"
+                    id="month"
+                    name="month"
+                    value="3"
+                >
+
+                <input
+                    type="hidden"
+                    id="hour"
+                    name="hour"
+                    value="14"
+                >
+
+                <input
+                    type="hidden"
+                    id="minute"
+                    name="minute"
+                    value="0"
+                >
+
+                <input
+                    type="hidden"
+                    id="day_of_week"
+                    name="day_of_week"
+                    value="5"
+                >
+
+            </section>
+
+
+
+            <!-- =============================================
+                 SECTION 02
+                 ============================================= -->
+
+            <section class="form-section">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <span class="step-number">
+                            02
+                        </span>
+
+                        <div class="heading-text">
+
+                            <h2>
+                                Users on the sector
+                            </h2>
+
+                            <p>
+                                Current user activity on this
+                                5G sector.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- MAX ACTIVE USERS DL -->
+
+                <div class="slider-group">
+
+                    <div class="slider-header">
+
+                        <label for="max_active_users_dl">
+                            Max active users DL
+                        </label>
+
+                        <span
+                            id="max_active_users_dl_value"
+                            class="slider-value"
+                        >
+                            50
+                        </span>
+
+                    </div>
+
+                    <input
+                        type="range"
+                        id="max_active_users_dl"
+                        name="max_active_users_dl"
+                        min="0"
+                        max="200"
+                        value="50"
+                        step="1"
+                    >
+
+                </div>
+
+
+
+                <!-- MAX ACTIVE USERS UL -->
+
+                <div class="slider-group">
+
+                    <div class="slider-header">
+
+                        <label for="max_active_users_ul">
+                            Max active users UL
+                        </label>
+
+                        <span
+                            id="max_active_users_ul_value"
+                            class="slider-value"
+                        >
+                            20
+                        </span>
+
+                    </div>
+
+                    <input
+                        type="range"
+                        id="max_active_users_ul"
+                        name="max_active_users_ul"
+                        min="0"
+                        max="100"
+                        value="20"
+                        step="1"
+                    >
+
+                </div>
+
+
+
+                <!-- MAX RRC USERS -->
+
+                <div class="slider-group">
+
+                    <div class="slider-header">
+
+                        <label for="max_rrc_users">
+                            Max RRC users
+                        </label>
+
+                        <span
+                            id="max_rrc_users_value"
+                            class="slider-value"
+                        >
+                            50
+                        </span>
+
+                    </div>
+
+                    <input
+                        type="range"
+                        id="max_rrc_users"
+                        name="max_rrc_users"
+                        min="0"
+                        max="300"
+                        value="50"
+                        step="1"
+                    >
+
+                </div>
+
+
+
+                <!-- RRC USERS -->
+
+                <div class="slider-group">
+
+                    <div class="slider-header">
+
+                        <label for="rrc_users">
+                            RRC users
+                        </label>
+
+                        <span
+                            id="rrc_users_value"
+                            class="slider-value"
+                        >
+                            30
+                        </span>
+
+                    </div>
+
+                    <input
+                        type="range"
+                        id="rrc_users"
+                        name="rrc_users"
+                        min="0"
+                        max="300"
+                        value="30"
+                        step="1"
+                    >
+
+                </div>
+
+
+
+                <!-- ACTIVE USERS DL -->
+
+                <div class="slider-group">
+
+                    <div class="slider-header">
+
+                        <label for="active_users_dl">
+                            Active users DL
+                        </label>
+
+                        <span
+                            id="active_users_dl_value"
+                            class="slider-value"
+                        >
+                            40
+                        </span>
+
+                    </div>
+
+                    <input
+                        type="range"
+                        id="active_users_dl"
+                        name="active_users_dl"
+                        min="0"
+                        max="200"
+                        value="40"
+                        step="1"
+                    >
+
+                </div>
+
+
+
+                <!-- ACTIVE USERS UL -->
+
+                <div class="slider-group">
+
+                    <div class="slider-header">
+
+                        <label for="active_users_ul">
+                            Active users UL
+                        </label>
+
+                        <span
+                            id="active_users_ul_value"
+                            class="slider-value"
+                        >
+                            15
+                        </span>
+
+                    </div>
+
+                    <input
+                        type="range"
+                        id="active_users_ul"
+                        name="active_users_ul"
+                        min="0"
+                        max="100"
+                        value="15"
+                        step="1"
+                    >
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =============================================
+                 SECTION 03
+                 ============================================= -->
+
+            <section class="form-section">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <span class="step-number">
+                            03
+                        </span>
+
+                        <div class="heading-text">
+
+                            <h2>
+                                Traffic load
+                            </h2>
+
+                            <p>
+                                Radio resource utilization
+                                and data throughput.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- RB UTILIZATION -->
+
+                <div class="slider-group">
+
+                    <div class="slider-header">
+
+                        <label for="rb_utilization">
+                            5G RB utilization
+                        </label>
+
+                        <span
+                            id="rb_utilization_value"
+                            class="slider-value"
+                        >
+                            45
+                        </span>
+
+                    </div>
+
+                    <input
+                        type="range"
+                        id="rb_utilization"
+                        name="rb_utilization"
+                        min="0"
+                        max="100"
+                        value="45"
+                        step="0.1"
+                    >
+
+                    <div class="range-labels">
+
+                        <span>
+                            0%
+                        </span>
+
+                        <span>
+                            100%
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- DL THROUGHPUT -->
+
+                <div class="slider-group">
+
+                    <div class="slider-header">
+
+                        <label for="dl_throughput_mbps">
+                            DL throughput
+                        </label>
+
+                        <span
+                            id="dl_throughput_mbps_value"
+                            class="slider-value"
+                        >
+                            100
+                        </span>
+
+                    </div>
+
+                    <input
+                        type="range"
+                        id="dl_throughput_mbps"
+                        name="dl_throughput_mbps"
+                        min="0"
+                        max="1000"
+                        value="100"
+                        step="0.1"
+                    >
+
+                    <div class="unit-label">
+                        Mbps
+                    </div>
+
+                </div>
+
+
+
+                <!-- UL THROUGHPUT -->
+
+                <div class="slider-group">
+
+                    <div class="slider-header">
+
+                        <label for="ul_throughput_mbps">
+                            UL throughput
+                        </label>
+
+                        <span
+                            id="ul_throughput_mbps_value"
+                            class="slider-value"
+                        >
+                            30
+                        </span>
+
+                    </div>
+
+                    <input
+                        type="range"
+                        id="ul_throughput_mbps"
+                        name="ul_throughput_mbps"
+                        min="0"
+                        max="500"
+                        value="30"
+                        step="0.1"
+                    >
+
+                    <div class="unit-label">
+                        Mbps
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =============================================
+                 SECTION 04
+                 ============================================= -->
+
+            <section class="form-section">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <span class="step-number">
+                            04
+                        </span>
+
+                        <div class="heading-text">
+
+                            <h2>
+                                Radio quality
+                            </h2>
+
+                            <p>
+                                CQI and MIMO network conditions.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- CQI 1 -->
+
+                <div class="slider-group">
+
+                    <div class="slider-header">
+
+                        <label for="cqi_rank_1">
+                            CQI rank 1
+                        </label>
+
+                        <span
+                            id="cqi_rank_1_value"
+                            class="slider-value"
+                        >
+                            5
+                        </span>
+
+                    </div>
+
+                    <input
+                        type="range"
+                        id="cqi_rank_1"
+                        name="cqi_rank_1"
+                        min="0"
+                        max="100"
+                        value="5"
+                        step="0.1"
+                    >
+
+                </div>
+
+
+
+                <!-- CQI 2 -->
+
+                <div class="slider-group">
+
+                    <div class="slider-header">
+
+                        <label for="cqi_rank_2">
+                            CQI rank 2
+                        </label>
+
+                        <span
+                            id="cqi_rank_2_value"
+                            class="slider-value"
+                        >
+                            5
+                        </span>
+
+                    </div>
+
+                    <input
+                        type="range"
+                        id="cqi_rank_2"
+                        name="cqi_rank_2"
+                        min="0"
+                        max="100"
+                        value="5"
+                        step="0.1"
+                    >
+
+                </div>
+
+
+
+                <!-- CQI 3 -->
+
+                <div class="slider-group">
+
+                    <div class="slider-header">
+
+                        <label for="cqi_rank_3">
+                            CQI rank 3
+                        </label>
+
+                        <span
+                            id="cqi_rank_3_value"
+                            class="slider-value"
+                        >
+                            5
+                        </span>
+
+                    </div>
+
+                    <input
+                        type="range"
+                        id="cqi_rank_3"
+                        name="cqi_rank_3"
+                        min="0"
+                        max="100"
+                        value="5"
+                        step="0.1"
+                    >
+
+                </div>
+
+
+
+                <!-- CQI 4 -->
+
+                <div class="slider-group">
+
+                    <div class="slider-header">
+
+                        <label for="cqi_rank_4">
+                            CQI rank 4
+                        </label>
+
+                        <span
+                            id="cqi_rank_4_value"
+                            class="slider-value"
+                        >
+                            5
+                        </span>
+
+                    </div>
+
+                    <input
+                        type="range"
+                        id="cqi_rank_4"
+                        name="cqi_rank_4"
+                        min="0"
+                        max="100"
+                        value="5"
+                        step="0.1"
+                    >
+
+                </div>
+
+
+
+                <!-- MIMO -->
+
+                <div class="slider-group">
+
+                    <div class="slider-header">
+
+                        <label for="mimo_rank_dl">
+                            MIMO rank DL
+                        </label>
+
+                        <span
+                            id="mimo_rank_dl_value"
+                            class="slider-value"
+                        >
+                            2
+                        </span>
+
+                    </div>
+
+                    <input
+                        type="range"
+                        id="mimo_rank_dl"
+                        name="mimo_rank_dl"
+                        min="0"
+                        max="10"
+                        value="2"
+                        step="0.1"
+                    >
+
+                </div>
+
+            </section>
+
+        </form>
+
+
+
+        <!-- =================================================
+             RIGHT SIDE
+             ================================================= -->
+
+        <aside class="prediction-column">
+
+
+            <!-- =================================================
+                 PREDICTION CARD
+                 ================================================= -->
+
+            <div class="prediction-card">
+
+                <div class="prediction-top">
+
+                    <span class="live-dot"></span>
+
+                    <span>
+                        LIVE PREDICTION
+                    </span>
+
+                </div>
+
+
+                <div class="prediction-label">
+
+                    Estimated Baseband
+                    Energy Consumption
+
+                </div>
+
+
+                <div class="prediction-number">
+
+                    <!--
+                        This number is automatically updated
+                        by JavaScript after every prediction.
+                    -->
+
+                    <span id="predictionValue">
+                        —
+                    </span>
+
+                    <span>
+                        W
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 INFORMATION CARD
+                 ================================================= -->
+
+            <div class="info-card">
+
+                <h3>
+                    About this prediction
+                </h3>
+
+
+                <p>
+
+                    The model estimates
+                    <strong>
+                        Baseband Energy Consumption
+                    </strong>
+                    using 41 features from 5G
+                    network activity, traffic,
+                    radio quality, time and location.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 FEATURE GROUPS
+                 ================================================= -->
+
+            <div class="feature-card">
+
+                <h3>
+                    Feature groups
+                </h3>
+
+
+                <div class="feature-item">
+
+                    <div class="feature-row">
+
+                        <span>
+                            User activity
+                        </span>
+
+                        <span>
+                            6 inputs
+                        </span>
+
+                    </div>
+
+
+                    <div class="feature-bar">
+
+                        <span style="width:80%;"></span>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="feature-item">
+
+                    <div class="feature-row">
+
+                        <span>
+                            Traffic load
+                        </span>
+
+                        <span>
+                            3 inputs
+                        </span>
+
+                    </div>
+
+
+                    <div class="feature-bar">
+
+                        <span style="width:65%;"></span>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="feature-item">
+
+                    <div class="feature-row">
+
+                        <span>
+                            Radio quality
+                        </span>
+
+                        <span>
+                            5 inputs
+                        </span>
+
+                    </div>
+
+
+                    <div class="feature-bar">
+
+                        <span style="width:55%;"></span>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="feature-item">
+
+                    <div class="feature-row">
+
+                        <span>
+                            Time & location
+                        </span>
+
+                        <span>
+                            27 inputs
+                        </span>
+
+                    </div>
+
+
+                    <div class="feature-bar">
+
+                        <span style="width:90%;"></span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+    </div>
+
+
+
+    <!-- =================================================
+         FOOTER
+         ================================================= -->
+
+    <footer>
+
+        <span>
+            TowerPulse
+        </span>
+
+        <span>
+            5G Network Energy Consumption Prediction
+        </span>
+
+    </footer>
+
+</main>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+     ===================================================== -->
+
+<script>
+
+
+/* =========================================================
+   DEBOUNCE TIMER
+   ========================================================= */
+
+let predictionTimer = null;
+
+
+
+/* =========================================================
+   UPDATE SLIDER DISPLAY VALUE
+   ========================================================= */
+
+function updateSliderValue(
+    inputId,
+    outputId
+) {
+
+    const input =
+        document.getElementById(
+            inputId
+        );
+
+
+    const output =
+        document.getElementById(
+            outputId
+        );
+
+
+    if (
+        input &&
+        output
+    ) {
+
+        output.textContent =
+            input.value;
+
+    }
+
+}
+
+
+
+/* =========================================================
+   DATE AND TIME FEATURES
+   ========================================================= */
+
+function updateDateTimeFeatures() {
+
+    const dateInput =
+        document.getElementById(
+            "date"
+        );
+
+
+    const timeInput =
+        document.getElementById(
+            "time"
+        );
+
+
+    if (!dateInput.value) {
+
+        return;
+
+    }
+
+
+    const timeValue =
+        timeInput.value ||
+        "00:00";
+
+
+    const date =
+        new Date(
+            dateInput.value +
+            "T" +
+            timeValue
+        );
+
+
+    /*
+        Extract the same time features
+        used during model training.
+    */
+
+    document.getElementById(
+        "day"
+    ).value =
+        date.getDate();
+
+
+    document.getElementById(
+        "month"
+    ).value =
+        date.getMonth() + 1;
+
+
+    document.getElementById(
+        "hour"
+    ).value =
+        date.getHours();
+
+
+    document.getElementById(
+        "minute"
+    ).value =
+        date.getMinutes();
+
+
+    /*
+        JavaScript:
+        Sunday = 0
+
+        Pandas:
+        Monday = 0
+
+        Convert JavaScript day to pandas day.
+    */
+
+    const javascriptDay =
+        date.getDay();
+
+
+    const pandasDay =
+        javascriptDay === 0
+            ? 6
+            : javascriptDay - 1;
+
+
+    document.getElementById(
+        "day_of_week"
+    ).value =
+        pandasDay;
+
+}
+
+
+
+/* =========================================================
+   SECTOR SELECTION
+   ========================================================= */
+
+function selectSector(sector) {
+
+    const buttons =
+        document.querySelectorAll(
+            ".sector-btn"
+        );
+
+
+    buttons.forEach(
+        function(button) {
+
+            button.classList.remove(
+                "active"
+            );
+
+        }
+    );
+
+
+    const selectedButton =
+        document.querySelector(
+            '[data-sector="' +
+            sector +
+            '"]'
+        );
+
+
+    if (selectedButton) {
+
+        selectedButton.classList.add(
+            "active"
+        );
+
+    }
+
+
+    document.getElementById(
+        "sector"
+    ).value =
+        sector;
+
+
+    requestLivePrediction();
+
+}
+
+
+
+/* =========================================================
+   REQUEST LIVE PREDICTION
+   ========================================================= */
+
+function requestLivePrediction() {
+
+    clearTimeout(
+        predictionTimer
+    );
+
+
+    predictionTimer =
+        setTimeout(
+            function() {
+
+                livePrediction();
+
+            },
+            150
+        );
+
+}
+
+
+
+/* =========================================================
+   LIVE PREDICTION
+   ========================================================= */
+
+async function livePrediction() {
+
+    /*
+        Update hidden date/time fields first.
+    */
+
+    updateDateTimeFeatures();
+
+
+    const form =
+        document.getElementById(
+            "predictionForm"
+        );
+
+
+    const formData =
+        new FormData(
+            form
+        );
+
+
+    try {
+
+        const response =
+            await fetch(
+                "/predict",
+                {
+                    method: "POST",
+                    body: formData
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (data.success) {
+
+            /*
+                Update the prediction value
+                without refreshing the page.
+            */
+
+            document.getElementById(
+                "predictionValue"
+            ).textContent =
+                data.prediction;
+
+        }
+
+        else {
+
+            document.getElementById(
+                "predictionValue"
+            ).textContent =
+                "—";
+
+
+            console.log(
+                "Prediction error:",
+                data.error
+            );
+
+        }
+
+    }
+
+    catch (error) {
+
+        console.log(
+            "Prediction request failed:",
+            error
+        );
+
+    }
+
+}
+
+
+
+/* =========================================================
+   SET PRESET VALUE
+   ========================================================= */
+
+function setValue(
+    inputId,
+    value
+) {
+
+    const input =
+        document.getElementById(
+            inputId
+        );
+
+
+    if (input) {
+
+        input.value =
+            value;
+
+    }
+
+}
+
+
+
+/* =========================================================
+   PRESETS
+   ========================================================= */
+
+function setPreset(type) {
+
+
+    /* =====================================================
+       QUIET NIGHT
+       ===================================================== */
+
+    if (type === "quiet") {
+
+        setValue(
+            "max_active_users_dl",
+            10
+        );
+
+        setValue(
+            "max_active_users_ul",
+            5
+        );
+
+        setValue(
+            "max_rrc_users",
+            15
+        );
+
+        setValue(
+            "rrc_users",
+            8
+        );
+
+        setValue(
+            "active_users_dl",
+            8
+        );
+
+        setValue(
+            "active_users_ul",
+            3
+        );
+
+        setValue(
+            "rb_utilization",
+            15
+        );
+
+        setValue(
+            "dl_throughput_mbps",
+            30
+        );
+
+        setValue(
+            "ul_throughput_mbps",
+            10
+        );
+
+        setValue(
+            "cqi_rank_1",
+            3
+        );
+
+        setValue(
+            "cqi_rank_2",
+            2
+        );
+
+        setValue(
+            "cqi_rank_3",
+            1
+        );
+
+        setValue(
+            "cqi_rank_4",
+            1
+        );
+
+        setValue(
+            "mimo_rank_dl",
+            1
+        );
+
+    }
+
+
+
+    /* =====================================================
+       TYPICAL
+       ===================================================== */
+
+    if (type === "typical") {
+
+        setValue(
+            "max_active_users_dl",
+            50
+        );
+
+        setValue(
+            "max_active_users_ul",
+            20
+        );
+
+        setValue(
+            "max_rrc_users",
+            50
+        );
+
+        setValue(
+            "rrc_users",
+            30
+        );
+
+        setValue(
+            "active_users_dl",
+            40
+        );
+
+        setValue(
+            "active_users_ul",
+            15
+        );
+
+        setValue(
+            "rb_utilization",
+            45
+        );
+
+        setValue(
+            "dl_throughput_mbps",
+            100
+        );
+
+        setValue(
+            "ul_throughput_mbps",
+            30
+        );
+
+        setValue(
+            "cqi_rank_1",
+            5
+        );
+
+        setValue(
+            "cqi_rank_2",
+            5
+        );
+
+        setValue(
+            "cqi_rank_3",
+            5
+        );
+
+        setValue(
+            "cqi_rank_4",
+            5
+        );
+
+        setValue(
+            "mimo_rank_dl",
+            2
+        );
+
+    }
+
+
+
+    /* =====================================================
+       BUSY CELL
+       ===================================================== */
+
+    if (type === "busy") {
+
+        setValue(
+            "max_active_users_dl",
+            100
+        );
+
+        setValue(
+            "max_active_users_ul",
+            40
+        );
+
+        setValue(
+            "max_rrc_users",
+            120
+        );
+
+        setValue(
+            "rrc_users",
+            80
+        );
+
+        setValue(
+            "active_users_dl",
+            90
+        );
+
+        setValue(
+            "active_users_ul",
+            35
+        );
+
+        setValue(
+            "rb_utilization",
+            70
+        );
+
+        setValue(
+            "dl_throughput_mbps",
+            300
+        );
+
+        setValue(
+            "ul_throughput_mbps",
+            100
+        );
+
+        setValue(
+            "cqi_rank_1",
+            10
+        );
+
+        setValue(
+            "cqi_rank_2",
+            8
+        );
+
+        setValue(
+            "cqi_rank_3",
+            6
+        );
+
+        setValue(
+            "cqi_rank_4",
+            5
+        );
+
+        setValue(
+            "mimo_rank_dl",
+            4
+        );
+
+    }
+
+
+
+    /* =====================================================
+       PEAK LOAD
+       ===================================================== */
+
+    if (type === "peak") {
+
+        setValue(
+            "max_active_users_dl",
+            180
+        );
+
+        setValue(
+            "max_active_users_ul",
+            80
+        );
+
+        setValue(
+            "max_rrc_users",
+            250
+        );
+
+        setValue(
+            "rrc_users",
+            180
+        );
+
+        setValue(
+            "active_users_dl",
+            160
+        );
+
+        setValue(
+            "active_users_ul",
+            70
+        );
+
+        setValue(
+            "rb_utilization",
+            95
+        );
+
+        setValue(
+            "dl_throughput_mbps",
+            800
+        );
+
+        setValue(
+            "ul_throughput_mbps",
+            300
+        );
+
+        setValue(
+            "cqi_rank_1",
+            20
+        );
+
+        setValue(
+            "cqi_rank_2",
+            15
+        );
+
+        setValue(
+            "cqi_rank_3",
+            12
+        );
+
+        setValue(
+            "cqi_rank_4",
+            10
+        );
+
+        setValue(
+            "mimo_rank_dl",
+            8
+        );
+
+    }
+
+
+    /*
+        Update all visible slider values.
+    */
+
+    refreshAllSliderValues();
+
+
+    /*
+        Request prediction after preset changes.
+    */
+
+    requestLivePrediction();
+
+}
+
+
+
+/* =========================================================
+   REFRESH SLIDER LABELS
+   ========================================================= */
+
+function refreshAllSliderValues() {
+
+    const sliders = [
+
+        [
+            "max_active_users_dl",
+            "max_active_users_dl_value"
+        ],
+
+        [
+            "max_active_users_ul",
+            "max_active_users_ul_value"
+        ],
+
+        [
+            "max_rrc_users",
+            "max_rrc_users_value"
+        ],
+
+        [
+            "rrc_users",
+            "rrc_users_value"
+        ],
+
+        [
+            "active_users_dl",
+            "active_users_dl_value"
+        ],
+
+        [
+            "active_users_ul",
+            "active_users_ul_value"
+        ],
+
+        [
+            "rb_utilization",
+            "rb_utilization_value"
+        ],
+
+        [
+            "dl_throughput_mbps",
+            "dl_throughput_mbps_value"
+        ],
+
+        [
+            "ul_throughput_mbps",
+            "ul_throughput_mbps_value"
+        ],
+
+        [
+            "cqi_rank_1",
+            "cqi_rank_1_value"
+        ],
+
+        [
+            "cqi_rank_2",
+            "cqi_rank_2_value"
+        ],
+
+        [
+            "cqi_rank_3",
+            "cqi_rank_3_value"
+        ],
+
+        [
+            "cqi_rank_4",
+            "cqi_rank_4_value"
+        ],
+
+        [
+            "mimo_rank_dl",
+            "mimo_rank_dl_value"
+        ]
+
+    ];
+
+
+    sliders.forEach(
+        function(item) {
+
+            updateSliderValue(
+                item[0],
+                item[1]
+            );
+
+        }
+    );
+
+}
+
+
+
+/* =========================================================
+   PAGE LOAD
+   ========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+
+        const form =
+            document.getElementById(
+                "predictionForm"
+            );
+
+
+        const fields =
+            form.querySelectorAll(
+                "input, select"
+            );
+
+
+        fields.forEach(
+            function(field) {
+
+
+                /* =========================================
+                   SLIDER / INPUT EVENT
+                   ========================================= */
+
+                field.addEventListener(
+                    "input",
+                    function() {
+
+
+                        /*
+                            Update date/time fields.
+                        */
+
+                        updateDateTimeFeatures();
+
+
+                        /*
+                            Update visible slider value.
+                        */
+
+                        const valueElement =
+                            document.getElementById(
+                                field.id +
+                                "_value"
+                            );
+
+
+                        if (valueElement) {
+
+                            valueElement.textContent =
+                                field.value;
+
+                        }
+
+
+                        /*
+                            Request prediction with debounce.
+                        */
+
+                        requestLivePrediction();
+
+                    }
+                );
+
+
+
+                /* =========================================
+                   CHANGE EVENT
+                   ========================================= */
+
+                field.addEventListener(
+                    "change",
+                    function() {
+
+                        updateDateTimeFeatures();
+
+
+                        /*
+                            Date, time and site dropdown
+                            changes trigger prediction.
+                        */
+
+                        requestLivePrediction();
+
+                    }
+                );
+
+            }
+        );
+
+
+        /*
+            Display correct initial slider values.
+        */
+
+        refreshAllSliderValues();
+
+
+        /*
+            Generate first prediction automatically.
+        */
+
+        requestLivePrediction();
+
+    }
+);
+
+</script>
+
+</body>
+
+</html>
